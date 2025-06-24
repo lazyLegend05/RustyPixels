@@ -24,5 +24,4 @@
 
 ```bash
 git clone https://github.com/lazyLegend05/RustyPixels.git
-cd rustypixels
 cargo build --release
