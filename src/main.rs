@@ -1,3 +1,6 @@
+mod image_to_ascii;
+use image_to_ascii::image_to_ascii;
+
 use std::io::{self, Write};
 use colored::*;
 
@@ -16,7 +19,15 @@ fn main() {
         io::stdin().read_line(&mut input).unwrap();
 
         match input.trim() {
-            "1" => println!("{}", "Launching Image to ASCII...".green()),
+            "1" => {
+                println!("{}", "Enter image path (e.g., ./cat.png):".blue());
+
+                let mut path = String::new();                      // create empty String
+                io::stdin().read_line(&mut path).unwrap();         // get user input
+                let path = path.trim();                            // remove newline
+
+                image_to_ascii(path);                              // pass as &str
+            },
             "2" => println!("{}", "Launching Figlet...".magenta()),
             "0" => {
                 println!("{}", "Goodbye!".bold().red());
